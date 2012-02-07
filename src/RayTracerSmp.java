@@ -79,7 +79,7 @@ public class RayTracerSmp{
 	public void render() throws Exception{
 		// Setup worlds to render
 		final World[] worlds = genWorlds.getWorlds();
-		try{
+
 		// Setup progress window
 		JFrame frame = new JFrame( "Rendering..." );
 		frame.setBounds( 0, 0, 300, 50 * THREADS + 50 );
@@ -157,8 +157,6 @@ public class RayTracerSmp{
 		} );
 
 		main.setString( "Done!" );
-		} catch(java.awt.HeadlessException e){
-		}
 
 	}
 
