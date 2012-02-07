@@ -12,6 +12,7 @@ import edu.rit.pj.ParallelRegion;
 import edu.rit.pj.ParallelTeam;
 import edu.rit.pj.reduction.ObjectOp;
 import edu.rit.pj.reduction.SharedObject;
+import edu.rit.pj.Comm;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -28,6 +29,7 @@ public class RayTracerSmp{
 	private WorldGenerator genWorlds;
 
 	public static void main( String[] args ) throws Exception{
+		Comm.init(args);
 		int seed = new Random().nextInt();
 		try{
 			seed = Integer.parseInt(args[0]);
@@ -77,7 +79,7 @@ public class RayTracerSmp{
 	public void render() throws Exception{
 		// Setup worlds to render
 		final World[] worlds = genWorlds.getWorlds();
-
+		try{
 		// Setup progress window
 		JFrame frame = new JFrame( "Rendering..." );
 		frame.setBounds( 0, 0, 300, 50 * THREADS + 50 );
@@ -155,6 +157,9 @@ public class RayTracerSmp{
 		} );
 
 		main.setString( "Done!" );
+		} catch(java.awt.HeadlessException e){
+		}
+
 	}
 
 }
