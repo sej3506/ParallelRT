@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
+import edu.rit.pj.Comm;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -17,6 +18,7 @@ public class RayTracerSeq {
 	private WorldGenerator genWorlds;
 	
 	public static void main(String[] args) throws Exception {
+		Comm.init(args);
 		
 		WorldGenerator gen = new WorldMarbleGrid( 10, WorldMarbleGrid.DIAGONAL, 5 );
 //	    WorldGenerator gen = new WorldMarbleGrid( 10, WorldMarbleGrid.DIAGONAL );
